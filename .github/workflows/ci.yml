@@ -16,7 +16,8 @@ jobs:
 
       # Étape 2 : Récupération du code
       - name: Étape 2 - Récupération du code
-        uses: actions/checkout@v4
+        echo "recuperation du code source"
+        echo : echo"step2= ${{ vars.STEP2}}"
 
       # Étape 3 : Build
       - name: Étape 3 - Build
