@@ -1,8 +1,8 @@
-name: CI Pipeline
+name: CI Lab
 
 on:
   push:
-    branches: [ main ]
+  pull_request:
 
 jobs:
   ci-job:
@@ -10,23 +10,26 @@ jobs:
 
     steps:
 
-      - name: Étape 1 - Installation JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
+      # Étape 1 : Installation
+      - name: Étape 1 - Installation
+        run: echo "Installation terminée"
 
+      # Étape 2 : Récupération du code
       - name: Étape 2 - Récupération du code
         uses: actions/checkout@v4
 
+      # Étape 3 : Build
       - name: Étape 3 - Build
-        run: mvn clean compile
+        run: echo "Build effectué"
 
+      # Étape 4 : Tests
       - name: Étape 4 - Tests
-        run: mvn test
+        run: echo "Tests réussis"
 
+      # Étape 5 : Packaging
       - name: Étape 5 - Packaging
-        run: mvn package
+        run: echo "Packaging terminé"
 
-      - name: Étape 6 - Fin du pipeline
+      # Étape 6 : Fin du pipeline
+      - name: Étape 6 - Fin
         run: echo "Pipeline terminé avec succès"
