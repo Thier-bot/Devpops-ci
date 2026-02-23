@@ -1,0 +1,32 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Étape 1 - Installation
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Étape 2 - Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Étape 3 - Build
+        run: mvn clean compile
+
+      - name: Étape 4 - Tests
+        run: mvn test
+
+      - name: Étape 5 - Packaging
+        run: mvn package
+
+      - name: Étape 6 - Fin du pipeline
+        run: echo "Pipeline terminé avec succès"
